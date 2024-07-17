@@ -42,6 +42,7 @@ export class QueryService {
       balance: formatEther(balance),
     };
   }
+
   async queryUOP(dto: QueryUOPDto) {
     // begin to get the uop via sdk
     // now we create an instance which contains: a rpcProvider(publicClient), a signer(in this case, it is a walletClientSigner), the name and version of the smart account, and the index of it)
@@ -56,10 +57,10 @@ export class QueryService {
 
     const okxSmartContractAccount =
       await okxSmartContractAccountSDK.createOKXSmartContractAccount({
-        chain: arbitrum,
+        chain: dto.chainId | 42161,
         // chain: 421614,
         signer: new remoteSigner(
-          dto.credential,
+          dto.subject,
           JWT_VALIDATOR_TEMPLATE as Address,
         ),
         index: 0n,

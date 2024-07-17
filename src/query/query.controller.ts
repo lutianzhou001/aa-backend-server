@@ -1,7 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { QueryService } from './query.service';
-import { QueryAAInfoDto, QueryUOPDto } from "./dto/queryUOP.dto";
-import { UserOperation } from 'permissionless/types/userOperation';
+import { QueryAAInfoDto, QueryUOPDto } from './dto/queryUOP.dto';
 
 @Controller('query')
 export class QueryController {
