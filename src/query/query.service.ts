@@ -60,7 +60,7 @@ export class QueryService {
         chain: dto.chainId | 42161,
         // chain: 421614,
         signer: new remoteSigner(
-          dto.subject,
+          dto.credential,
           JWT_VALIDATOR_TEMPLATE as Address,
         ),
         index: 0n,

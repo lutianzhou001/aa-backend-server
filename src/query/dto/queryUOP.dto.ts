@@ -1,12 +1,13 @@
 import { BuildUserOpParams } from 'account-abstraction-wallet-sdk';
 import { IsNotEmpty } from 'class-validator';
+import { Hex } from 'viem';
 
 export class QueryUOPDto {
   @IsNotEmpty()
   readonly chainId: number;
 
   @IsNotEmpty()
-  readonly subject: string;
+  readonly credential: Hex;
 
   @IsNotEmpty()
   readonly buildUserOpParams: BuildUserOpParams;
