@@ -4,6 +4,9 @@ import { UserOperation } from 'permissionless/types/userOperation';
 
 export class SendUOPDto {
   @IsNotEmpty()
+  readonly chainId: number;
+
+  @IsNotEmpty()
   readonly credential: Hex;
 
   @IsNotEmpty()

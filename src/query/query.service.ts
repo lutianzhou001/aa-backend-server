@@ -33,7 +33,6 @@ export class QueryService {
       });
 
     const aa = await okxSmartContractAccount.getAddress();
-    console.log(aa);
     const balance = await okxSmartContractAccount.rpcProvider.getBalance({
       address: aa,
     });
