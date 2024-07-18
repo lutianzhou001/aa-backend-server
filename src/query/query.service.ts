@@ -2,8 +2,8 @@ import {
   convertToHex,
   OKXSmartAccountSDK,
   remoteSigner,
-  SigType
-} from "account-abstraction-wallet-sdk";
+  SigType,
+} from 'account-abstraction-wallet-sdk';
 import { arbitrum } from 'viem/chains';
 import { JWT_VALIDATOR_TEMPLATE } from 'account-abstraction-wallet-sdk/dist/packages/common/constants';
 import { QueryUOPDto } from './dto/queryUOP.dto';
