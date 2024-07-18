@@ -1,7 +1,7 @@
 import {
-  convertToHex,
   OKXSmartAccountSDK,
   remoteSigner,
+  SigType,
 } from 'account-abstraction-wallet-sdk';
 import { arbitrum } from 'viem/chains';
 import { JWT_VALIDATOR_TEMPLATE } from 'account-abstraction-wallet-sdk/dist/packages/common/constants';
@@ -65,8 +65,17 @@ export class QueryService {
         index: 0n,
       });
 
-    return convertToHex(
-      await okxSmartContractAccount.buildUserOp(dto.buildUserOpParams),
+    const builtUop = await okxSmartContractAccount.buildUserOp(
+      dto.buildUserOpParams,
     );
+    const uopSignedHash = await okxSmartContractAccount.getUOPSignedHash(
+      SigType.EIP712,
+      builtUop,
+    );
+
+    return {
+      uopSignedHash: uopSignedHash,
+      uop: okxSmartContractAccount.buildUserOp(dto.buildUserOpParams),
+    };
   }
 }
