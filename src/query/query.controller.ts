@@ -13,6 +13,6 @@ export class QueryController {
 
   @Post('aainfo')
   async queryAAInfo(@Body() dto: QueryAAInfoDto) {
-    return await this.queryService.queryAAInfo(dto.subject);
+    return await this.queryService.queryAAInfo(dto.sub);
   }
 }
