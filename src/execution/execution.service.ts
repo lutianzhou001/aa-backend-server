@@ -35,10 +35,9 @@ export class ExecutionService {
     const uopHash = await okxSmartContractAccount.sendUserOp(
       convertToBigInt(dto.uop),
     );
-    const transcationHash =
-      await okxSmartContractAccount.bundlerClient.waitForConfirm(
-        uopHash.txHash,
-      );
-    return String('https://arbiscan.io/tx/' + transcationHash.txHash);
+    const transactionHash =
+      await okxSmartContractAccount.bundlerClient.waitForConfirm(uopHash);
+    console.log(transactionHash);
+    return String('https://arbiscan.io/tx/' + transactionHash.txHash);
   }
 }
