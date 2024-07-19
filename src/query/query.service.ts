@@ -6,7 +6,7 @@ import {
 } from 'account-abstraction-wallet-sdk';
 import { arbitrum } from 'viem/chains';
 import { QueryUOPDto } from './dto/queryUOP.dto';
-import { Address, erc20Abi, formatEther, toHex } from 'viem';
+import { Address, erc20Abi, formatEther, padHex, toHex } from "viem";
 
 export class QueryService {
   constructor() {}
@@ -98,9 +98,8 @@ export class QueryService {
       },
     };
     console.log(args);
-    const builtUop = await okxSmartContractAccount.buildUserOp(
-      args,
-    );
+    const builtUop = await okxSmartContractAccount.buildUserOp(args);
+    builtUop.signature = padHex('0x', { size: 33 });
     const uopSignedHash = await okxSmartContractAccount.getUOPSignedHash(
       SigType.EIP712,
       builtUop,
