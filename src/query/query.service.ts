@@ -38,7 +38,8 @@ export class QueryService {
       {
         address: '0x060BcB804Afdbbf95D2fD49974bd16D02aC6646d',
         abi: erc20Abi,
-        functionName: 'getBalance',
+        functionName: 'balanceOf',
+        args: [aa],
       },
     );
 
