@@ -89,8 +89,17 @@ export class QueryService {
       });
 
     console.log('in query uop', await okxSmartContractAccount.getAddress());
+    const args = {
+      ...dto.buildUserOpParams,
+      uopAndPaymasterOverrides: {
+        callGasLimit: BigInt(1900000),
+        verificationGasLimit: BigInt(1900000),
+        // verificationGasLimit: BigInt(453286),
+      },
+    };
+    console.log(args);
     const builtUop = await okxSmartContractAccount.buildUserOp(
-      dto.buildUserOpParams,
+      args,
     );
     const uopSignedHash = await okxSmartContractAccount.getUOPSignedHash(
       SigType.EIP712,
