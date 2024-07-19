@@ -5,7 +5,7 @@ import {
   remoteSigner,
   convertToBigInt,
 } from 'account-abstraction-wallet-sdk';
-import { Address } from 'viem';
+import { Address, toHex } from "viem";
 
 @Injectable()
 export class ExecutionService {
@@ -26,7 +26,7 @@ export class ExecutionService {
         chain: dto.chainId,
         // chain: 421614,
         signer: new remoteSigner(
-          dto.credential,
+          toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
         index: 999n,

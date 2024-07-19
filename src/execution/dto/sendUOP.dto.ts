@@ -7,7 +7,7 @@ export class SendUOPDto {
   readonly chainId: number;
 
   @IsNotEmpty()
-  readonly credential: Hex;
+  readonly sub: string;
 
   @IsNotEmpty()
   readonly uop: UserOperation<'v0.7'>;
