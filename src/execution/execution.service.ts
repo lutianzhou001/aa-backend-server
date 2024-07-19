@@ -29,7 +29,7 @@ export class ExecutionService {
           toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
-        index: 888n,
+        index: 777n,
       });
     console.log('successfully received the uop', convertToBigInt(dto.uop));
     const uopHash = await okxSmartContractAccount.sendUserOp(
