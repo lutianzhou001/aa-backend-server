@@ -73,7 +73,7 @@ export class QueryService {
           dto.credential,
           JWT_VALIDATOR_TEMPLATE as Address,
         ),
-        index: 0n,
+        index: 999n,
       });
 
     const builtUop = await okxSmartContractAccount.buildUserOp(

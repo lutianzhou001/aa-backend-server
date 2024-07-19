@@ -30,7 +30,7 @@ export class ExecutionService {
           dto.credential,
           JWT_VALIDATOR_TEMPLATE as Address,
         ),
-        index: 0n,
+        index: 999n,
       });
     console.log('successfully received the uop', convertToBigInt(dto.uop));
     return await okxSmartContractAccount.sendUserOp(convertToBigInt(dto.uop));
