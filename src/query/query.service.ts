@@ -33,7 +33,7 @@ export class QueryService {
           subject,
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
-        index: 777n,
+        index: 666n,
       });
 
     const aa = await okxSmartContractAccount.getAddress();
@@ -85,7 +85,7 @@ export class QueryService {
           toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
-        index: 777n,
+        index: 666n,
       });
 
     console.log('in query uop', await okxSmartContractAccount.getAddress());

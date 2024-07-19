@@ -29,7 +29,7 @@ export class ExecutionService {
           toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
-        index: 777n,
+        index: 666n,
       });
     console.log('successfully received the uop', convertToBigInt(dto.uop));
     const uopHash = await okxSmartContractAccount.sendUserOp(
@@ -38,6 +38,8 @@ export class ExecutionService {
     const transactionHash =
       await okxSmartContractAccount.bundlerClient.waitForConfirm(uopHash);
     console.log(transactionHash);
-    return String('https://arbiscan.io/tx/' + transactionHash.txHash);
+    return {
+      url: String('https://arbiscan.io/tx/' + transactionHash.txHash),
+    };
   }
 }
