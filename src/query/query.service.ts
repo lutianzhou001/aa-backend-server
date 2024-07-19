@@ -7,7 +7,7 @@ import {
 import { arbitrum } from 'viem/chains';
 import { JWT_VALIDATOR_TEMPLATE } from 'account-abstraction-wallet-sdk/dist/packages/common/constants';
 import { QueryUOPDto } from './dto/queryUOP.dto';
-import { Address, formatEther, toHex } from 'viem';
+import { Address, erc20Abi, formatEther, toHex } from 'viem';
 
 export class QueryService {
   constructor() {}
@@ -34,12 +34,21 @@ export class QueryService {
       });
 
     const aa = await okxSmartContractAccount.getAddress();
+    const tokenBalance = await okxSmartContractAccount.rpcProvider.readContract(
+      {
+        address: '0x060BcB804Afdbbf95D2fD49974bd16D02aC6646d',
+        abi: erc20Abi,
+        functionName: 'getBalance',
+      },
+    );
+
     const balance = await okxSmartContractAccount.rpcProvider.getBalance({
       address: aa,
     });
     return {
       address: aa,
       balance: formatEther(balance),
+      tokenBalance: tokenBalance,
     };
   }
 
