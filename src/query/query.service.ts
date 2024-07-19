@@ -49,7 +49,7 @@ export class QueryService {
     return {
       address: aa,
       balance: formatEther(balance),
-      tokenBalance: tokenBalance,
+      tokenBalance: formatEther(tokenBalance),
     };
   }
 
