@@ -14,8 +14,8 @@ export class ExecutionService {
     // begin to get the uop via sdk
     // now we create an instance which contains: a rpcProvider(publicClient), a signer(in this case, it is a walletClientSigner), the name and version of the smart account, and the index of it)
     const okxSmartContractAccountSDK = new OKXSmartAccountSDK({
-      bundlerClientUrl: 'https://www.okx.org',
-      paymasterClientUrl: 'https://www.okx.org',
+      bundlerClientUrl: 'https://www.okx.com',
+      paymasterClientUrl: 'https://www.okx.com',
       mainnetClientUrl:
         'https://eth-mainnet.g.alchemy.com/v2/DB0JapVSxzovPY3RaQSydinyWXPlpzi-',
       rpcUrl:
@@ -32,6 +32,7 @@ export class ExecutionService {
         ),
         index: 0n,
       });
+    console.log('successfully received the uop', convertToBigInt(dto.uop));
     return await okxSmartContractAccount.sendUserOp(convertToBigInt(dto.uop));
   }
 }
