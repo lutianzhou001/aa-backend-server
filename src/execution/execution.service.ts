@@ -29,9 +29,16 @@ export class ExecutionService {
           toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
-        index: 999n,
+        index: 888n,
       });
     console.log('successfully received the uop', convertToBigInt(dto.uop));
-    return await okxSmartContractAccount.sendUserOp(convertToBigInt(dto.uop));
+    const uopHash = await okxSmartContractAccount.sendUserOp(
+      convertToBigInt(dto.uop),
+    );
+    const transcationHash =
+      await okxSmartContractAccount.bundlerClient.waitForConfirm(
+        uopHash.txHash,
+      );
+    return String('https://arbiscan.io/tx/' + transcationHash.txHash);
   }
 }
