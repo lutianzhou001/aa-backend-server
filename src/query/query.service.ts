@@ -30,7 +30,7 @@ export class QueryService {
         chain: arbitrum,
         // chain: 421614,
         signer: new remoteSigner(credential, JWT_VALIDATOR_TEMPLATE as Address),
-        index: 0n,
+        index: 999n,
       });
 
     const aa = await okxSmartContractAccount.getAddress();
