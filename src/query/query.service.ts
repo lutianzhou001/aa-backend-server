@@ -11,9 +11,9 @@ import { Address, erc20Abi, formatEther, toHex } from 'viem';
 export class QueryService {
   constructor() {}
 
-  async queryAAInfo(subject: string) {
-    console.log('in query aa info', subject);
-    const credential = toHex(subject);
+  async queryAAInfo(sub: string) {
+    console.log('in query aa info', sub);
+    const subject = toHex(sub);
     // begin to get the uop via sdk
     // now we create an instance which contains: a rpcProvider(publicClient), a signer(in this case, it is a walletClientSigner), the name and version of the smart account, and the index of it)
     const okxSmartContractAccountSDK = new OKXSmartAccountSDK({
@@ -30,7 +30,7 @@ export class QueryService {
         chain: arbitrum,
         // chain: 421614,
         signer: new remoteSigner(
-          credential,
+          subject,
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
         index: 999n,
@@ -76,19 +76,19 @@ export class QueryService {
         'https://arb-mainnet.g.alchemy.com/v2/47SxM1HQgXWeKVL9rYVS6A4LZ8B_Ktk0',
     });
 
-    console.log('in query uop', dto.credential);
+    console.log('in query uop', dto.sub);
     const okxSmartContractAccount =
       await okxSmartContractAccountSDK.createOKXSmartContractAccount({
         chain: dto.chainId | 42161,
         // chain: 421614,
         signer: new remoteSigner(
-          dto.credential,
+          toHex(dto.sub),
           '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
         index: 999n,
       });
 
-    console.log('in query uop', okxSmartContractAccount.getAddress());
+    console.log('in query uop', await okxSmartContractAccount.getAddress());
     const builtUop = await okxSmartContractAccount.buildUserOp(
       dto.buildUserOpParams,
     );
