@@ -5,7 +5,6 @@ import {
   remoteSigner,
   convertToBigInt,
 } from 'account-abstraction-wallet-sdk';
-import { JWT_VALIDATOR_TEMPLATE } from 'account-abstraction-wallet-sdk/dist/packages/common/constants';
 import { Address } from 'viem';
 
 @Injectable()
@@ -28,7 +27,7 @@ export class ExecutionService {
         // chain: 421614,
         signer: new remoteSigner(
           dto.credential,
-          JWT_VALIDATOR_TEMPLATE as Address,
+          '0x98c43cCc7F515Bebe8E161B2B7A301f3B8d2c7ae' as Address,
         ),
         index: 999n,
       });
